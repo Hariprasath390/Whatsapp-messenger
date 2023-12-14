@@ -26,7 +26,7 @@ function WhatsappUI() {
               <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                 <img
                   className="absolute top-0 left-0 w-[100%] height-[100%] object-cover cursor-pointer"
-                  src="/images/roshna.jpg"
+                  src="/images/virat1.jpg"
                   alt=""
                 />
               </div>
@@ -412,7 +412,7 @@ function WhatsappUI() {
                     <p className="  text-[#06e744]  text-sm font-bold">11:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“How are you?”</p>
+                    <p className="text-gray-500">“i Love you  ”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -490,12 +490,12 @@ function WhatsappUI() {
                 <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                   <img
                     className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
-                    src="https://images.pexels.com/photos/2474307/pexels-photo-2474307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="/images/thor.jpg"
                     alt=""
                   />
                 </div>
                 <h4>
-                  Leo
+                  Thor
                   <br />
                   <span>Online</span>
                 </h4>
@@ -733,7 +733,7 @@ function WhatsappUI() {
               <div className="group relative flex w-full my-5 justify-start items-center">
                 <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm">
                   Awesome! I'll start a video chat with you in a few.
-                  <span className="block mt-2 text-xs opacity-50">07:48</span>
+                  <span className="block mt-2 text-xs opacity-50">07:49</span>
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
                   <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
