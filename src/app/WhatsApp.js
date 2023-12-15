@@ -408,11 +408,11 @@ function WhatsappUI() {
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">alia bhat</h4>
-                    <p className="  text-[#06e744]  text-sm font-bold">11:49</p>
+                    <h4 className="text-lg font-semibold">Alia bhat</h4>
+                    <p className="  text-[#06e744]  text-sm font-bold">6:59</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“i Love you  ”</p>
+                    <p className="text-gray-500">“i Love you ”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -490,14 +490,14 @@ function WhatsappUI() {
                 <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                   <img
                     className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
-                  src="/images/thor.jpg"
+                    src="/images/thor.jpg"
                     alt=""
                   />
                 </div>
-                <h4>
+                <h4 className="font-bold font-sans text-[14px]">
                   Thor
                   <br />
-                  <span>Online</span>
+                  <span className="font-sans text-gray-500 ">Online</span>
                 </h4>
               </div>
               <div className="flex justify-end pl-[110px]">
