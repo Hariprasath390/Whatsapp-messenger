@@ -1,0 +1,9 @@
+.drawer-open {
+  margin-left: 0;
+  transition: margin-left 0.3s ease-out;
+}
+
+.drawer-closed {
+  margin-left: -250px; /* Adjust the width of the drawer accordingly */
+  transition: margin-left 0.3s ease-in;
+}

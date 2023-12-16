@@ -16,6 +16,12 @@ function WhatsappUI() {
     setInputValue(event.target.value);
   };
 
+  const [showEmojiDiv, setShowEmojiDiv] = useState(false);
+
+  const toggleEmojiDiv = () => {
+    setShowEmojiDiv(!showEmojiDiv);
+  };
+
   return (
     <div>
       <div className=" w-[100%]  h-[20%] absolute bg-[#00a884]"></div>
@@ -291,7 +297,7 @@ function WhatsappUI() {
             </div>
 
             <div
-              className="relative overflow-y-scroll noscrollbar "
+              className="relative overflow-y-scroll scrollbar "
               style={{ height: "calc(100% - 110px)" }}
             >
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
@@ -304,7 +310,7 @@ function WhatsappUI() {
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Vijay</h4>
+                    <h4 className="text-md text-black/80 font-bold">Vijay</h4>
 
                     <p className="  text-[#06e744]  text-sm font-bold">11:49</p>
                   </div>
@@ -327,7 +333,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Rogers</h4>
+                    <h4 className="text-md text-black/80 font-bold">Rogers</h4>
                     <p className="text-[#06e744]  text-sm font-bold">10:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
@@ -349,7 +355,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Roshna</h4>
+                    <h4 className="text-md text-black/80 font-bold">Roshna</h4>
                     <p className=" text-[#06e744]  text-sm font-bold">09:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
@@ -371,7 +377,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Zendaya</h4>
+                    <h4 className="text-md text-black/80 font-bold">Zendaya</h4>
                     <p className="time text-sm">08:49</p>
                   </div>
                   <div className="text-message">
@@ -389,7 +395,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Thor</h4>
+                    <h4 className="text-md text-black/80 font-bold">Thor</h4>
                     <p className="time text-sm">07:49</p>
                   </div>
                   <div className="text-message">
@@ -408,7 +414,9 @@ function WhatsappUI() {
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Alia bhat</h4>
+                    <h4 className="text-md text-black/80 font-bold">
+                      Alia bhat
+                    </h4>
                     <p className="  text-[#06e744]  text-sm font-bold">6:59</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
@@ -429,7 +437,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Natasha</h4>
+                    <h4 className="text-md text-black/80 font-bold">Natasha</h4>
                     <p className="time text-sm">06:49</p>
                   </div>
                   <div className="text-message">
@@ -448,7 +456,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Virat</h4>
+                    <h4 className="text-md text-black/80 font-bold">Virat</h4>
                     <p className="text-[#06e744]  text-sm font-bold">
                       Yesterday
                     </p>
@@ -471,7 +479,7 @@ function WhatsappUI() {
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
-                    <h4 className="text-lg font-semibold">Jeslin</h4>
+                    <h4 className="text-md text-black/80 font-bold">Jeslin</h4>
                     <p className="time">Yesterday</p>
                   </div>
                   <div className="text-message">
@@ -494,10 +502,12 @@ function WhatsappUI() {
                     alt=""
                   />
                 </div>
-                <h4 className="font-bold font-sans text-[14px]">
+                <h4 className="font-bold text-black/80 font-sans text-[14px]">
                   Thor
                   <br />
-                  <span className="font-sans text-gray-500 ">Online</span>
+                  <span className="font-sans text-gray-500 text-xs">
+                    Online
+                  </span>
                 </h4>
               </div>
               <div className="flex justify-end pl-[110px]">
@@ -554,18 +564,133 @@ function WhatsappUI() {
             </div>
 
             <div
-              className="relative w-[100%] p-[50px] overflow-y-auto noscrollbar "
+              className="relative w-[100%] p-[50px] overflow-y-auto scrollbar "
               style={{ height: "calc(100% - 120px)" }}
             >
               <div className="relative flex w-full my-5 justify-center">
-                <p className="relative right-0 text-right max-w-2/3 p-2 bg-dcf8c6 rounded-lg text-xs bg-[#ffffff]">
+                <p className="relative right-0 text-right max-w-2/3 p-2  rounded-lg text-xs bg-[#ffffff]">
                   Wednesday !
                 </p>
               </div>
 
+              {/* {showEmojiDiv && (
+                <div className="emojianimationn">
+                  <div className="flex bg-white  w-[308px] h-[56px] p-3 shadow-2xl gap-2 rounded-full ">
+                    <div className=" left-4 bg-white">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button like-button"
+                      >
+                        <h2
+                          className="text-2xl"
+                          role="img"
+                          aria-label="Thumbs Up"
+                        >
+                          👍
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div className="">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button love-button"
+                      >
+                        <h2 className="text-2xl" role="img" aria-label="Heart">
+                          ❤️
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div className="">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button laugh-button"
+                      >
+                        <h2
+                          className="text-2xl"
+                          role="img"
+                          aria-label="Laughing"
+                        >
+                          😂
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div className=" ">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button wow-button"
+                      >
+                        <h2 className="text-2xl" role="img" aria-label="Wow">
+                          😮
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div className=" ">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button sad-button"
+                      >
+                        <h2 className="text-2xl" role="img" aria-label="Sad">
+                          😢
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div className=" ">
+                      <div
+                        role="button"
+                        tabIndex="0"
+                        className="emoji-button pray-button"
+                      >
+                        <h2
+                          className="text-2xl"
+                          role="img"
+                          aria-label="Praying"
+                        >
+                          🙏
+                        </h2>
+                      </div>
+                    </div>
+
+                    <div
+                      role="button"
+                      aria-label="More reactions"
+                      class="border rounded-full bg-gray-100 text-gray-600 flex items-center justify-center p-2"
+                    >
+                      <span data-icon="add-alt-2" class="flex items-center">
+                        <svg
+                          viewBox="0 0 18 18"
+                          width="14"
+                          preserveAspectRatio="xMidYMid meet"
+                          fill="none"
+                          class="text-gray-600"
+                        >
+                          <title>add more reactions</title>
+                          <path
+                            d="M0.779492 9.77945C0.345435 9.34539 0.354642 8.64524 0.789127 8.21075C1.00194 7.99794 1.27674 7.88259 1.57806 7.90017L7.88829 7.87934L7.90025 1.57797C7.89154 1.26779 7.99803 1.00185 8.21083 0.789044C8.64532 0.354559 9.32774 0.363086 9.7618 0.797143C9.99211 1.02746 10.0895 1.2667 10.0805 1.59463L10.0862 7.89598L16.4053 7.90173C16.7598 7.90156 16.9991 7.99893 17.2116 8.21153C17.6457 8.64558 17.6542 9.34573 17.2197 9.78022C17.0069 9.99302 16.7499 10.0906 16.4308 10.0908L10.1117 10.1028L10.0998 16.4041C10.1085 16.7143 10.002 16.9803 9.78031 17.2019C9.34582 17.6364 8.64567 17.6456 8.20275 17.2027C7.97244 16.9724 7.87508 16.6977 7.8841 16.3875L7.8872 10.095L1.60356 10.107C1.27564 10.116 1.00981 10.0098 0.779492 9.77945Z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )} */}
+
               <div className="group relative flex w-full my-5 justify-end items-center">
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
+                  <div
+                    className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1"
+                    onClick={toggleEmojiDiv}
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       className="w-6 h-6 text-white fill-current"
@@ -576,14 +701,14 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
                   I've been waiting to see that show asap!
                   <span className="block mt-2 text-xs opacity-50">07:43</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]">
                   Ahh, I can't believe you do too!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -601,7 +726,7 @@ function WhatsappUI() {
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]">
                   The trailer looks good
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -619,7 +744,7 @@ function WhatsappUI() {
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3 rounded-lg text-sm bg-[#ffffff]">
                   I've been waiting to watch it!!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -649,7 +774,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
                   😐😐😐
                   <span className="block mt-2 text-xs opacity-50">07:46</span>
                 </p>
@@ -668,7 +793,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
                   Mee too! 😊
                   <span className="block mt-2 text-xs opacity-50">07:46</span>
                 </p>
@@ -705,7 +830,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
                   Sure
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
@@ -724,7 +849,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3 bg-dcf8c6 rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
                   I'm free now!
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>

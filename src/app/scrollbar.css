@@ -1,11 +1,11 @@
-.noscrollbar::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: 4px;
   height: 0px;
   margin-top: 1px;
 }
 
 /* Define the thumb style */
-.noscrollbar::-webkit-scrollbar-thumb {
+.scrollbar::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom right, #9ca3af 0%, #9ca3af 100%);
   border-radius: 5px;
   height: 10%; /* Adjust the height to your preference */
@@ -38,4 +38,33 @@
   height: 55px;
   overflow: hidden;
   border-radius: 50%;
+}
+
+.chat-list {
+  position: relative;
+  height: calc(100% - 110px);
+  overflow-y: auto;
+}
+
+.emojianimationn {
+  transform-origin: center bottom;
+  left: 470.031px;
+  margin-left: 0px;
+  margin-right: 0px;
+  bottom: 221.5px;
+  transform: scale(0);
+  opacity: 0;
+  animation: scaleAnimation 0.5s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes scaleAnimation {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
