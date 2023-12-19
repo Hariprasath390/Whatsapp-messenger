@@ -9,7 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import "./TemporaryDrawer.css"; // Import your CSS file for styling
+import "./TemporaryDrawer.css"; 
 
 const TemporaryDrawer = () => {
   const [state, setState] = useState({
@@ -17,14 +17,11 @@ const TemporaryDrawer = () => {
   });
 
   useEffect(() => {
-    // Close the left drawer after a certain timeout (e.g., 3000 milliseconds)
     const timeoutId = setTimeout(() => {
       setState({ ...state, left: false });
     }, 3000);
-
-    // Cleanup the timeout to avoid side effects
     return () => clearTimeout(timeoutId);
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, []);
 
   const list = () => (
     <Box

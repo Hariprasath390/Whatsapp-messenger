@@ -3,8 +3,25 @@
 import React, { useState } from "react";
 
 import "./scrollbar.css";
+// import TemporaryDrawer from "./components/TemporaryDrawer";
+
+import Modal from "./components/Modal";
 
 function WhatsappUI() {
+  // const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // const handleDrawerClick = () => {
+  //   // Toggle the state to open/close the drawer
+  //   setDrawerOpen(!drawerOpen);
+  // };
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalClick = () => {
+    // Toggle the state to open/close the drawer
+    setModalOpen(!modalOpen);
+  };
+
   const [isSearch, setIsSearch] = useState(true);
   const [inputValue, setInputValue] = useState("");
 
@@ -45,6 +62,7 @@ function WhatsappUI() {
                         role="button"
                         tabIndex="0"
                         className="p-2 rounded-full hover:bg-gray-200"
+                        onClick={handleModalClick}
                       >
                         <span className="text-blue-500">
                           <svg
@@ -230,6 +248,18 @@ function WhatsappUI() {
                   </div>
                 </div>
               </div>
+
+              {modalOpen && (
+                <div className="fixed z-50">
+                  <Modal />
+                </div>
+              )}
+
+              {/* {drawerOpen && (
+                <div className="z-50 fixed ">
+                  <TemporaryDrawer />
+                </div>
+              )} */}
             </div>
 
             <div className="flex items-center md:justify-evenly  justify-between  max-w-full  h-[49px] bg-[#f6f6f6]  mb-[1px] ">
