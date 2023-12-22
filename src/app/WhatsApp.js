@@ -264,16 +264,13 @@ function WhatsappUI() {
 
             <div className="flex items-center md:justify-evenly  justify-between  max-w-full  h-[49px] bg-[#f6f6f6]  mb-[1px] ">
               <button
-                className="p-1 rounded-lg bg-white focus:outline-none  w-[376.5px]  ml-4 "
+                className="p-1 rounded-lg bg-white focus:outline-none w-full  ml-4 "
                 onClick={toggleIcon}
               >
                 <span className="text-gray-600">
                   {isSearch ? (
                     <div className="flex items-center">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className=" h-6 w-6  sm:mr-[32px]"
-                      >
+                      <svg viewBox="0 0 24 24" className=" h-6 w-6  ">
                         <title>search</title>
                         <path
                           fill="currentColor"
@@ -291,10 +288,7 @@ function WhatsappUI() {
                     </div>
                   ) : (
                     <div className="flex items-center">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-6 w-6 sm:mr-[32px] "
-                      >
+                      <svg viewBox="0 0 24 24" className="h-6 w-6  ">
                         <title>back</title>
                         <path
                           fill="currentColor"
