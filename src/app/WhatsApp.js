@@ -41,9 +41,9 @@ function WhatsappUI() {
 
   return (
     <div>
-      <div className=" w-[100%]  h-[20%] absolute bg-[#00a884]"></div>
+      <div className=" w-[100%]  h-[20%] absolute bg-[#00a884] hidden md:block"></div>
       <div className="flex justify-center items-center">
-        <div className="main-container mt-6 ">
+        <div className="main-container md:mt-6 ">
           <div className="relative w-[30%] h-[100%] flex-[30%] bg-[#fff]">
             <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
               <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
@@ -54,29 +54,27 @@ function WhatsappUI() {
                 />
               </div>
 
-              <div className="flex items-center">
+              <div className="flex items-center ">
                 <div className="flex items-center md:space-x-2">
                   <div className=" transform scale-100 opacity-100">
-                    <div className="">
-                      <div
-                        role="button"
-                        tabIndex="0"
-                        className="p-2 rounded-full hover:bg-gray-200"
-                        onClick={handleModalClick}
-                      >
-                        <span className="text-blue-500">
-                          <svg
-                            viewBox="0 0 24 24"
-                            height="24"
-                            width="24"
-                            fill="currentColor"
-                            className="text-gray-600"
-                          >
-                            <title>business-advertise</title>
-                            <path d="m18 11v2h4v-2zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zm4.4-12.01c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zm-16.4 3.4c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3v-12l-5 3zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"></path>
-                          </svg>
-                        </span>
-                      </div>
+                    <div
+                      role="button"
+                      tabIndex="0"
+                      className="p-2 rounded-full hover:bg-gray-200"
+                      onClick={handleModalClick}
+                    >
+                      <span className="text-blue-500">
+                        <svg
+                          viewBox="0 0 24 24"
+                          height="24"
+                          width="24"
+                          fill="currentColor"
+                          className="text-gray-600"
+                        >
+                          <title>business-advertise</title>
+                          <path d="m18 11v2h4v-2zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zm4.4-12.01c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zm-16.4 3.4c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3v-12l-5 3zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"></path>
+                        </svg>
+                      </span>
                     </div>
                   </div>
                   <div className="">
@@ -262,7 +260,7 @@ function WhatsappUI() {
               )} */}
             </div>
 
-            <div className="flex items-center md:justify-evenly  justify-between  max-w-full  h-[49px] bg-[#f6f6f6]  mb-[1px] ">
+            <div className="flex items-center md:justify-evenly  justify-between  max-w-full  h-[49px] bg-[#f6f6f6]  mb-[1px]  ">
               <button
                 className="p-1 rounded-lg bg-white focus:outline-none w-full  ml-4 "
                 onClick={toggleIcon}
@@ -320,10 +318,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div
-              className="relative overflow-y-scroll scrollbar "
-              style={{ height: "calc(100% - 110px)" }}
-            >
+            <div className=" overflow-y-scroll scrollbar h-[calc(100%-110px)] ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <img
