@@ -521,7 +521,7 @@ function WhatsappUI() {
                     alt=""
                   />
                 </div>
-                <h4 className="font-bold text-black/80 font-sans text-[14px]">
+                <h4 className="font-bold text-black/70 font-sans text-[14px]">
                   Thor
                   <br />
                   <span className="font-sans text-gray-500 text-xs">
