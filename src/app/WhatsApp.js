@@ -41,7 +41,7 @@ function WhatsappUI() {
 
   return (
     <div>
-      <div className=" w-[100%]  h-[20%] absolute bg-[#00a884] hidden md:block"></div>
+      <div className=" w-[100%]  h-[20%] absolute bg-[#00a883] hidden md:block"></div>
       <div className="flex justify-center items-center">
         <div className="main-container md:mt-6 ">
           <div className="relative w-[30%] h-[100%] flex-[30%] bg-[#fff]">
