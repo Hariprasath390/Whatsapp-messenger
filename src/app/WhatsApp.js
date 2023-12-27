@@ -83,7 +83,7 @@ function WhatsappUI() {
                       tabIndex="0"
                       className="p-2 rounded-full hover:bg-gray-200"
                     >
-                      <span className="text-blue-500">
+                      <span className="text-blue-400">
                         <svg
                           viewBox="0 0 24 24"
                           height="24"
