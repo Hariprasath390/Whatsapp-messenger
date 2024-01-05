@@ -321,7 +321,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div className=" overflow-y-scroll scrollbar h-[calc(100%-110px)] ">
+            <div className=" overflow-y-scroll scrollbar sm:h-[calc(100%-110px)]  h-screen">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <Image
@@ -329,7 +329,7 @@ function WhatsappUI() {
                     src="/images/vijay.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
@@ -354,7 +354,7 @@ function WhatsappUI() {
                     src="/images/rogers.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -378,7 +378,7 @@ function WhatsappUI() {
                     src="/images/roshna.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -402,7 +402,7 @@ function WhatsappUI() {
                     src="/images/zendaya.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
@@ -422,7 +422,7 @@ function WhatsappUI() {
                     src="/images/thor.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
@@ -431,7 +431,9 @@ function WhatsappUI() {
                     <p className="time text-sm">07:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">Awesome! I&apos;ll start a vid..</p>
+                    <p className="text-gray-500">
+                      Awesome! I&apos;ll start a vid..
+                    </p>
                   </div>
                 </div>
               </div>
@@ -443,7 +445,7 @@ function WhatsappUI() {
                     src="/images/alia.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
@@ -468,7 +470,7 @@ function WhatsappUI() {
                     src="/images/natasha.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -489,7 +491,7 @@ function WhatsappUI() {
                     src="/images/virat.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -514,7 +516,7 @@ function WhatsappUI() {
                     src="/images/jeslin.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -541,7 +543,7 @@ function WhatsappUI() {
                     src="/images/thor.jpg"
                     alt=""
                     width={1000}
-                  height={800}
+                    height={800}
                   />
                 </div>
                 <h4 className="font-bold text-black/70 font-sans text-[14px]">
