@@ -6,6 +6,7 @@ import "./scrollbar.css";
 // import TemporaryDrawer from "./components/TemporaryDrawer";
 
 import Modal from "./components/Modal";
+import Image from "next/image";
 
 function WhatsappUI() {
   // const [drawerOpen, setDrawerOpen] = useState(false);
@@ -47,10 +48,12 @@ function WhatsappUI() {
           <div className="relative w-[30%] h-[100%] flex-[30%] bg-[#fff]">
             <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
               <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
-                <img
+                <Image
                   className="absolute top-0 left-0 w-[100%] height-[100%] object-cover cursor-pointer"
                   src="/images/virat1.jpg"
                   alt=""
+                  width={1000}
+                  height={800}
                 />
               </div>
 
@@ -321,10 +324,12 @@ function WhatsappUI() {
             <div className=" overflow-y-scroll scrollbar h-[calc(100%-110px)] ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/vijay.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
@@ -344,10 +349,12 @@ function WhatsappUI() {
 
               <div className="chat-box flex items-center border-b border-gray-200 p-[15px]">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/rogers.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -366,10 +373,12 @@ function WhatsappUI() {
 
               <div className="chat-box flex items-center border-b border-gray-200 p-[15px] ">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/roshna.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -388,10 +397,12 @@ function WhatsappUI() {
 
               <div className="chat-box flex items-center  border-b border-gray-200 p-[15px] ">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/zendaya.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
@@ -406,10 +417,12 @@ function WhatsappUI() {
               </div>
               <div className="chat-box flex items-center p-[15px]  border-b border-gray-200">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/thor.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full ">
@@ -418,17 +431,19 @@ function WhatsappUI() {
                     <p className="time text-sm">07:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">Awesome! I'll start a vid..</p>
+                    <p className="text-gray-500">Awesome! I&apos;ll start a vid..</p>
                   </div>
                 </div>
               </div>
 
               <div className=" flex items-center  border-b border-gray-200 p-[15px]">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/alia.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className=" flex flex-col ml-4 w-full">
@@ -448,10 +463,12 @@ function WhatsappUI() {
               </div>
               <div className="chat-box flex items-center p-[15px]  border-b border-gray-200">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/natasha.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -467,10 +484,12 @@ function WhatsappUI() {
 
               <div className="chat-box flex items-center p-[15px] border-b border-gray-200">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
                     src="/images/virat.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -490,10 +509,12 @@ function WhatsappUI() {
               </div>
               <div className="chat-box flex items-center p-[15px] border-b border-gray-200">
                 <div className="img-box w-14 h-14 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     className="object-cover w-full h-full"
-                    src="https://images.pexels.com/photos/14526673/pexels-photo-14526673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    src="/images/jeslin.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <div className="chat-details flex flex-col ml-4 w-full">
@@ -515,10 +536,12 @@ function WhatsappUI() {
             <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
               <div className=" flex gap-3 ">
                 <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
-                  <img
+                  <Image
                     className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
                     src="/images/thor.jpg"
                     alt=""
+                    width={1000}
+                  height={800}
                   />
                 </div>
                 <h4 className="font-bold text-black/70 font-sans text-[14px]">
@@ -721,14 +744,14 @@ function WhatsappUI() {
                 </div>
 
                 <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
-                  I've been waiting to see that show asap!
+                  I&apos;ve been waiting to see that show asap!
                   <span className="block mt-2 text-xs opacity-50">07:43</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
                 <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]">
-                  Ahh, I can't believe you do too!
+                  Ahh, I can&apos;t believe you do too!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
@@ -764,7 +787,7 @@ function WhatsappUI() {
 
               <div className="group relative flex w-full my-5 items-center">
                 <p className="text-right max-w-2/3 p-3 rounded-lg text-sm bg-[#ffffff]">
-                  I've been waiting to watch it!!
+                  I&apos;ve been waiting to watch it!!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
@@ -820,7 +843,7 @@ function WhatsappUI() {
 
               <div className="group relative flex w-full my-5 justify-start items-center">
                 <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm">
-                  We should video chat to discuss, if you're up for it!
+                  We should video chat to discuss, if you&apos;re up for it!
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
@@ -869,14 +892,14 @@ function WhatsappUI() {
                 </div>
 
                 <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
-                  I'm free now!
+                  I&apos;m free now!
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 justify-start items-center">
                 <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm">
-                  Awesome! I'll start a video chat with you in a few.
+                  Awesome! I&apos;ll start a video chat with you in a few.
                   <span className="block mt-2 text-xs opacity-50">07:49</span>
                 </p>
                 <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
