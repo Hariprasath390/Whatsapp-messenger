@@ -17,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(https://camo.githubusercontent.com/854a93c27d64274c4f8f5a0b6ec36ee1d053cfcd934eac6c63bed9eaef9764bd/68747470733a2f2f7765622e77686174736170702e636f6d2f696d672f62672d636861742d74696c652d6461726b5f61346265353132653731393562366237333364393131306234303866303735642e706e67);
+  background-image: url("../../public/whatsappbg.png");
   background-size: repeat; /* adjust as needed */
   opacity: 0.5;
 }
@@ -58,8 +58,7 @@
   z-index: 1;
 }
 
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 762px) {
   .main-container {
     position: relative;
     width: 1367px;
@@ -70,21 +69,15 @@
     box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5),
       0px 2px 5px 0 rgba(0, 0, 0, 0.6);
   }
-
-
-  
-} 
+}
 
 @media screen and (max-width: 800px) {
-
   .chat-list {
     position: relative;
     height: calc(100%);
     overflow-y: auto;
   }
-  
-} 
-
+}
 
 @keyframes scaleAnimation {
   from {

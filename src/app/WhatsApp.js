@@ -45,8 +45,8 @@ function WhatsappUI() {
       <div className=" w-[100%]  h-[20%] absolute bg-[#00a883] hidden md:block"></div>
       <div className="flex justify-center items-center">
         <div className="main-container md:mt-6 ">
-          <div className="relative w-[30%] h-[100%] flex-[30%] bg-[#fff]">
-            <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
+          <div className="md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] sticky top-0 ">
+            <div className="sm:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
               <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                 <Image
                   className="absolute top-0 left-0 w-[100%] height-[100%] object-cover cursor-pointer"
@@ -263,52 +263,81 @@ function WhatsappUI() {
               )} */}
             </div>
 
-            <div className="flex items-center md:justify-evenly  justify-between  max-w-full  h-[49px] bg-[#f6f6f6]  mb-[1px]  ">
-              <button
-                className="p-1 rounded-lg bg-white focus:outline-none w-full  ml-4 "
-                onClick={toggleIcon}
-              >
-                <span className="text-gray-600">
-                  {isSearch ? (
-                    <div className="flex items-center">
-                      <svg viewBox="0 0 24 24" className=" h-6 w-6  ">
-                        <title>search</title>
+            <div
+              className="flex justify-between items-center bg-[#f6f6f6]"
+              onClick={toggleIcon}
+            >
+              {isSearch ? (
+                <form className="w-full">
+                  <label
+                    for="search"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                  >
+                    Search
+                  </label>
+                  <div className="relative p-2 bg-[#f6f6f6]  ">
+                    <div className="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none ">
+                      <svg
+                        className="w-3 h-3 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                      >
                         <path
-                          fill="currentColor"
-                          d="M15.009,13.805h-0.636l-0.22-0.219c0.781-0.911,1.256-2.092,1.256-3.386 c0-2.876-2.332-5.207-5.207-5.207c-2.876,0-5.208,2.331-5.208,5.207s2.331,5.208,5.208,5.208c1.293,0,2.474-0.474,3.385-1.255 l0.221,0.22v0.635l4.004,3.999l1.194-1.195L15.009,13.805z M10.201,13.805c-1.991,0-3.605-1.614-3.605-3.605 s1.614-3.605,3.605-3.605s3.605,1.614,3.605,3.605S12.192,13.805,10.201,13.805z"
-                        ></path>
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
                       </svg>
-
-                      <input
-                        type="text"
-                        className="text-gray-600 border-gray-300 focus:outline-none bg-[#ffffff] "
-                        value={inputValue}
-                        onChange={handleChange}
-                        placeholder="Search or start new chat"
-                      />
                     </div>
-                  ) : (
-                    <div className="flex items-center">
-                      <svg viewBox="0 0 24 24" className="h-6 w-6  ">
+                    <input
+                      type="search"
+                      id="search"
+                      className="block w-full p-1.5 ps-10 text-sm text-gray-900 border border-gray-100 rounded-lg bg-white outline-none"
+                      value={inputValue}
+                      onChange={handleChange}
+                      placeholder="Search or start new chat"
+                      required
+                    />
+                  </div>
+                </form>
+              ) : (
+                <form className="w-full">
+                  <label
+                    for="search"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                  >
+                    Search
+                  </label>
+                  <div className="relative p-2 bg-[#f6f6f6]  ">
+                    <div className="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none ">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      >
                         <title>back</title>
                         <path
                           fill="currentColor"
                           d="M12,4l1.4,1.4L7.8,11H20v2H7.8l5.6,5.6L12,20l-8-8L12,4z"
                         ></path>
                       </svg>
-
-                      <input
-                        type="text"
-                        className="text-gray-600 border-gray-300 focus:outline-none bg-[#ffffff] "
-                        value={inputValue}
-                        onChange={handleChange}
-                      />
                     </div>
-                  )}
-                </span>
-              </button>
-
-              <button className=" p-2   rounded-full  focus:outline-none ">
+                    <input
+                      type="search"
+                      id="search"
+                      className="block w-full p-1.5 ps-10 text-sm text-gray-900 border border-gray-100 rounded-lg bg-white outline-none"
+                      value={inputValue}
+                      onChange={handleChange}
+                      placeholder="Search or start new chat"
+                      required
+                    />
+                  </div>
+                </form>
+              )}
+              <button className=" p-2   rounded-full  focus:outline-none   ">
                 <span className="text-gray-600" data-icon="filter">
                   <svg viewBox="0 0 24 24" className="h-6 w-6">
                     <title>filter</title>
@@ -321,7 +350,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div className=" overflow-y-scroll scrollbar sm:h-[calc(100%-110px)]  h-screen">
+            <div className=" overflow-y-scroll scrollbar sm:h-[calc(100%-110px)]  ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <Image
@@ -707,15 +736,15 @@ function WhatsappUI() {
                     <div
                       role="button"
                       aria-label="More reactions"
-                      class="border rounded-full bg-gray-100 text-gray-600 flex items-center justify-center p-2"
+                      className="border rounded-full bg-gray-100 text-gray-600 flex items-center justify-center p-2"
                     >
-                      <span data-icon="add-alt-2" class="flex items-center">
+                      <span data-icon="add-alt-2" className="flex items-center">
                         <svg
                           viewBox="0 0 18 18"
                           width="14"
                           preserveAspectRatio="xMidYMid meet"
                           fill="none"
-                          class="text-gray-600"
+                          className="text-gray-600"
                         >
                           <title>add more reactions</title>
                           <path
