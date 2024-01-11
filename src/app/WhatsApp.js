@@ -42,7 +42,7 @@ function WhatsappUI() {
 
   return (
     <div>
-      <div className=" w-[100%]  h-[20%] absolute bg-[#00a883] hidden md:block"></div>
+      <div className=" w-[100%]  h-[20%] absolute bg-gradient-to-r from-slate-500 to-yellow-100 hidden md:block"></div>
       <div className="flex justify-center items-center">
         <div className="main-container md:mt-6 ">
           <div className="md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] sticky top-0 ">
@@ -270,7 +270,7 @@ function WhatsappUI() {
             </div>
 
             <div
-              className="flex justify-between items-center bg-[#f6f6f6]"
+              className="flex justify-between items-center bg-[#f6f6f6] z-50"
               onClick={toggleIcon}
             >
               {isSearch ? (
@@ -356,7 +356,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div className=" overflow-y-scroll scrollbar sm:h-[calc(100%-110px)]  ">
+            <div className=" sm:overflow-y-scroll overflow-hidden scrollbar sm:h-[calc(100%-110px)] h-screen ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <Image
