@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-
 import "./scrollbar.css";
-// import TemporaryDrawer from "./components/TemporaryDrawer";
-
 import Modal from "./components/Modal";
 import Image from "next/image";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+// import TemporaryDrawer from "./components/TemporaryDrawer";
+
 
 function WhatsappUI() {
+
   // const [drawerOpen, setDrawerOpen] = useState(false);
 
   // const handleDrawerClick = () => {
@@ -19,7 +20,6 @@ function WhatsappUI() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleModalClick = () => {
-    // Toggle the state to open/close the drawer
     setModalOpen(!modalOpen);
   };
 
@@ -42,11 +42,12 @@ function WhatsappUI() {
 
   return (
     <div>
-      <div className=" w-[100%]  h-[20%] absolute bg-gradient-to-r from-slate-500 to-yellow-100 hidden md:block"></div>
+      <div className=" w-[100%]  h-[20%] absolute bg-gradient-to-r from-slate-500 to-yellow-100  hidden md:block"></div>
+    <ThemeSwitcher /> 
       <div className="flex justify-center items-center">
         <div className="main-container md:mt-6 ">
-          <div className="md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] sticky top-0 ">
-            <div className="sm:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed]  justify-between">
+          <div className="md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] dark:bg-gradient-to-r from-slate-500 to-yellow-1000   sticky top-0 ">
+            <div className="sm:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500 justify-between">
               <div className="flex-shrink-0 w-[40px] h-[40px] overflow-hidden rounded-[50%] ml-3">
                 <Image
                   className=" top-0 left-0   cursor-pointer"
@@ -270,7 +271,7 @@ function WhatsappUI() {
             </div>
 
             <div
-              className="flex justify-between items-center bg-[#f6f6f6] z-50"
+              className="flex justify-between items-center bg-[#f6f6f6] z-50 dark:bg-gradient-to-r from-slate-300"
               onClick={toggleIcon}
             >
               {isSearch ? (
@@ -281,7 +282,7 @@ function WhatsappUI() {
                   >
                     Search
                   </label>
-                  <div className="relative p-2 bg-[#f6f6f6]  ">
+                  <div className="relative p-2 bg-[#f6f6f6] dark:bg-gradient-to-r from-slate-400 ">
                     <div className="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none ">
                       <svg
                         className="w-3 h-3 text-gray-500 dark:text-gray-400"
@@ -318,7 +319,7 @@ function WhatsappUI() {
                   >
                     Search
                   </label>
-                  <div className="relative p-2 bg-[#f6f6f6]  ">
+                  <div className="relative p-2 bg-[#f6f6f6]  dark:bg-gradient-to-r from-slate-400">
                     <div className="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none ">
                       <svg
                         viewBox="0 0 24 24"
@@ -374,7 +375,7 @@ function WhatsappUI() {
                     <p className="  text-[#06e744]  text-sm font-bold">11:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“How are you?”</p>
+                    <p className="text-gray-500 dark:text-white ">“How are you?”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -398,7 +399,7 @@ function WhatsappUI() {
                     <p className="text-[#06e744]  text-sm font-bold">10:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“I’ll be there.”</p>
+                    <p className="text-gray-500 dark:text-white">“I’ll be there.”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       4
                     </b>
@@ -422,7 +423,7 @@ function WhatsappUI() {
                     <p className=" text-[#06e744]  text-sm font-bold">09:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“Make somebody’s day.”</p>
+                    <p className="text-gray-500 dark:text-white">“Make somebody’s day.”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       2
                     </b>
@@ -443,10 +444,10 @@ function WhatsappUI() {
                 <div className="chat-details flex flex-col ml-4 w-full ">
                   <div className="text-head flex justify-between items-center mb-1">
                     <h4 className="text-md text-black/80 font-bold">Zendaya</h4>
-                    <p className="time text-sm">08:49</p>
+                    <p className="time text-sm dark:text-black">08:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">“Dreams come true.”</p>
+                    <p className="text-gray-500 dark:text-white">“Dreams come true.”</p>
                   </div>
                 </div>
               </div>
@@ -463,10 +464,10 @@ function WhatsappUI() {
                 <div className="chat-details flex flex-col ml-4 w-full ">
                   <div className="text-head flex justify-between items-center mb-1">
                     <h4 className="text-md text-black/80 font-bold">Thor</h4>
-                    <p className="time text-sm">07:49</p>
+                    <p className="time text-sm dark:text-black">07:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">
+                    <p className="text-gray-500 dark:text-white">
                       Awesome! I&apos;ll start a vid..
                     </p>
                   </div>
@@ -491,7 +492,7 @@ function WhatsappUI() {
                     <p className="  text-[#06e744]  text-sm font-bold">6:59</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“i Love you ”</p>
+                    <p className="text-gray-500 dark:text-white">“i Love you ”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -511,10 +512,10 @@ function WhatsappUI() {
                 <div className="chat-details flex flex-col ml-4 w-full">
                   <div className="text-head flex justify-between items-center mb-1">
                     <h4 className="text-md text-black/80 font-bold">Natasha</h4>
-                    <p className="time text-sm">06:49</p>
+                    <p className="time text-sm dark:text-black">06:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">“Love, light, laughter.”</p>
+                    <p className="text-gray-500 dark:text-white">“Love, light, laughter.”</p>
                   </div>
                 </div>
               </div>
@@ -537,7 +538,7 @@ function WhatsappUI() {
                     </p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500">“Appreciate the mome..”</p>
+                    <p className="text-gray-500 dark:text-white">“Appreciate the mome..”</p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       2
                     </b>
@@ -560,17 +561,17 @@ function WhatsappUI() {
                     <p className="time">Yesterday</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500">“Now or never.”</p>
+                    <p className="text-gray-500 dark:text-white">“Now or never.”</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative w-[70%] h-[100%] flex-[70%] bg-[#e5ddd5] hidden md:block">
+          <div className="relative w-[70%] h-[100%] flex-[70%] bg-[#e5ddd5] dark:bg-gradient-to-r from-slate-500 hidden md:block">
             <div className="bg-image"> </div>
 
-            <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] px-[15px] justify-between">
+            <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500  px-[15px] justify-between">
               <div className=" flex gap-3 ">
                 <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                   <Image
@@ -581,10 +582,10 @@ function WhatsappUI() {
                     height={800}
                   />
                 </div>
-                <h4 className="font-bold text-black/70 font-sans text-[14px]">
+                <h4 className="font-bold text-black/70 font-sans text-[14px] dark:text-white">
                   Thor
                   <br />
-                  <span className="font-sans text-gray-500 text-xs">
+                  <span className="font-sans text-gray-500 text-xs dark:text-white">
                     Online
                   </span>
                 </h4>
@@ -647,7 +648,7 @@ function WhatsappUI() {
               style={{ height: "calc(100% - 120px)" }}
             >
               <div className="relative flex w-full my-5 justify-center">
-                <p className="relative right-0 text-right max-w-2/3 p-2  rounded-lg text-xs bg-[#ffffff]">
+                <p className="relative right-0 text-right max-w-2/3 p-2  rounded-lg text-xs bg-[#ffffff] dark:bg-[#b1b6a7] dark:text-black ">
                   Wednesday !
                 </p>
               </div>
@@ -780,14 +781,14 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0] ">
                   I&apos;ve been waiting to see that show asap!
-                  <span className="block mt-2 text-xs opacity-50">07:43</span>
+                  <span className="block mt-2 text-xs opacity-50 ">07:43</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]  dark:text-white dark:bg-[#838f96]">
                   Ahh, I can&apos;t believe you do too!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -805,7 +806,7 @@ function WhatsappUI() {
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]" >
                   The trailer looks good
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -823,7 +824,7 @@ function WhatsappUI() {
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3 rounded-lg text-sm bg-[#ffffff]">
+                <p className="text-right max-w-2/3 p-3 rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]">
                   I&apos;ve been waiting to watch it!!
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>
@@ -853,7 +854,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
                   😐😐😐
                   <span className="block mt-2 text-xs opacity-50">07:46</span>
                 </p>
@@ -872,14 +873,14 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
                   Mee too! 😊
                   <span className="block mt-2 text-xs opacity-50">07:46</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 justify-start items-center">
-                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm">
+                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm dark:text-white dark:bg-[#838f96]">
                   We should video chat to discuss, if you&apos;re up for it!
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
@@ -909,7 +910,7 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
                   Sure
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
@@ -928,14 +929,14 @@ function WhatsappUI() {
                   </div>
                 </div>
 
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6]">
+                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
                   I&apos;m free now!
                   <span className="block mt-2 text-xs opacity-50">07:48</span>
                 </p>
               </div>
 
               <div className="group relative flex w-full my-5 justify-start items-center">
-                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm">
+                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm dark:text-white dark:bg-[#838f96]">
                   Awesome! I&apos;ll start a video chat with you in a few.
                   <span className="block mt-2 text-xs opacity-50">07:49</span>
                 </p>
@@ -953,12 +954,12 @@ function WhatsappUI() {
               </div>
             </div>
 
-            <div className="relative w-[100%] h-[60px] bg-[#f0f0f0] flex justify-between items-center">
+            <div className="relative w-[100%] h-[60px] bg-[#f0f0f0] dark:bg-gradient-to-r from-slate-500  flex justify-between items-center ">
               <div className="relative">
-                <button className="p-2 rounded-full focus:outline-none">
+                <button className="p-2 rounded-full focus:outline-none ">
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-6 h-6 text-gray-700 fill-current"
+                    className="w-6 h-6 text-gray-700 fill-current dark:text-black"
                   >
                     <title>attach-menu-plus</title>
                     <path
@@ -971,7 +972,7 @@ function WhatsappUI() {
 
               <svg
                 viewBox="0 0 24 24"
-                className="w-10 h-[36.5px] p-2 text-gray-700 fill-current bg-white rounded-l-md -mx-2 ml-2"
+                className="w-10 h-[36.5px] p-2 text-gray-700 fill-current bg-white rounded-l-md -mx-2.5 ml-2 dark:bg-[#b1b6a7] dark:text-black"
               >
                 <title>smiley</title>
                 <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
@@ -979,14 +980,14 @@ function WhatsappUI() {
               <input
                 type="text"
                 placeholder="Type a message"
-                className="relative w-[90%]   mx-[4px] p-[6px] rounded-lg text-base border-none outline-none"
+                className="relative w-[90%]   mx-[4px] p-[6px] rounded-lg text-base border-none outline-none dark:bg-[#b1b6a7] dark:text-black dark:placeholder:text-black"
               />
 
               <div className="relative">
                 <button className="p-2  rounded-full focus:outline-none">
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-6 h-6 text-gray-700 fill-current"
+                    className="w-6 h-6 text-gray-700 fill-current dark:text-black"
                   >
                     <title>ptt</title>
                     <path d="M11.999,14.942c2.001,0,3.531-1.53,3.531-3.531V4.35c0-2.001-1.53-3.531-3.531-3.531S8.469,2.35,8.469,4.35v7.061C8.469,13.412,9.999,14.942,11.999,14.942z M18.237,11.412c0,3.531-2.942,6.002-6.237,6.002s-6.237-2.471-6.237-6.002H3.761c0,4.001,3.178,7.297,7.061,7.885v3.884h2.354v-3.884c3.884-0.588,7.061-3.884,7.061-7.885L18.237,11.412z"></path>
