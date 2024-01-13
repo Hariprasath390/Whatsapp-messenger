@@ -7,9 +7,7 @@ import Image from "next/image";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 // import TemporaryDrawer from "./components/TemporaryDrawer";
 
-
 function WhatsappUI() {
-
   // const [drawerOpen, setDrawerOpen] = useState(false);
 
   // const handleDrawerClick = () => {
@@ -41,13 +39,13 @@ function WhatsappUI() {
   };
 
   return (
-    <div>
+    <div className="no-scrollbar">
       <div className=" w-[100%]  h-[20%] absolute bg-gradient-to-r from-slate-500 to-yellow-100  hidden md:block"></div>
-    <ThemeSwitcher /> 
+      <ThemeSwitcher />
       <div className="flex justify-center items-center">
         <div className="main-container md:mt-6 ">
-          <div className="md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] dark:bg-gradient-to-r from-slate-500 to-yellow-1000   sticky top-0 ">
-            <div className="sm:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500 justify-between">
+          <div className=" md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] dark:bg-gradient-to-r from-slate-500 to-yellow-1000   sticky top-0 ">
+            <div className="lg:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500 justify-between">
               <div className="flex-shrink-0 w-[40px] h-[40px] overflow-hidden rounded-[50%] ml-3">
                 <Image
                   className=" top-0 left-0   cursor-pointer"
@@ -269,16 +267,15 @@ function WhatsappUI() {
                 </div>
               )} */}
             </div>
-
             <div
-              className="flex justify-between items-center bg-[#f6f6f6] z-50 dark:bg-gradient-to-r from-slate-300"
+              className="flex justify-between items-center bg-[#f6f6f6] z-50 dark:bg-gradient-to-r from-slate-300 sticky top-[60px]"
               onClick={toggleIcon}
             >
               {isSearch ? (
                 <form className="w-full">
                   <label
                     htmlFor="search"
-                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only "
                   >
                     Search
                   </label>
@@ -323,7 +320,7 @@ function WhatsappUI() {
                     <div className="absolute inset-y-0 start-2 flex items-center ps-3 pointer-events-none ">
                       <svg
                         viewBox="0 0 24 24"
-                        className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        className="w-4 h-4 dark:text-gray-500 text-white"
                       >
                         <title>back</title>
                         <path
@@ -344,7 +341,7 @@ function WhatsappUI() {
                   </div>
                 </form>
               )}
-              <button className=" p-2   rounded-full  focus:outline-none   ">
+              <button className=" p-2 rounded-full  focus:outline-none">
                 <span className="text-gray-600" data-icon="filter">
                   <svg viewBox="0 0 24 24" className="h-6 w-6">
                     <title>filter</title>
@@ -357,7 +354,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div className=" sm:overflow-y-scroll overflow-hidden scrollbar sm:h-[calc(100%-110px)] h-screen ">
+            <div className=" overflow-y-scroll no-scrollbar sm:h-[calc(100%-110px)] h-screen ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <Image
@@ -375,7 +372,9 @@ function WhatsappUI() {
                     <p className="  text-[#06e744]  text-sm font-bold">11:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500 dark:text-white ">“How are you?”</p>
+                    <p className="text-gray-500 dark:text-white ">
+                      “How are you?”
+                    </p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -399,7 +398,9 @@ function WhatsappUI() {
                     <p className="text-[#06e744]  text-sm font-bold">10:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500 dark:text-white">“I’ll be there.”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “I’ll be there.”
+                    </p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       4
                     </b>
@@ -423,7 +424,9 @@ function WhatsappUI() {
                     <p className=" text-[#06e744]  text-sm font-bold">09:49</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500 dark:text-white">“Make somebody’s day.”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “Make somebody’s day.”
+                    </p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       2
                     </b>
@@ -447,7 +450,9 @@ function WhatsappUI() {
                     <p className="time text-sm dark:text-black">08:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500 dark:text-white">“Dreams come true.”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “Dreams come true.”
+                    </p>
                   </div>
                 </div>
               </div>
@@ -492,7 +497,9 @@ function WhatsappUI() {
                     <p className="  text-[#06e744]  text-sm font-bold">6:59</p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500 dark:text-white">“i Love you ”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “i Love you ”
+                    </p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       1
                     </b>
@@ -515,7 +522,9 @@ function WhatsappUI() {
                     <p className="time text-sm dark:text-black">06:49</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500 dark:text-white">“Love, light, laughter.”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “Love, light, laughter.”
+                    </p>
                   </div>
                 </div>
               </div>
@@ -538,7 +547,9 @@ function WhatsappUI() {
                     </p>
                   </div>
                   <div className="text-message flex justify-between items-center">
-                    <p className="text-gray-500 dark:text-white">“Appreciate the mome..”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “Appreciate the mome..”
+                    </p>
                     <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
                       2
                     </b>
@@ -561,7 +572,9 @@ function WhatsappUI() {
                     <p className="time">Yesterday</p>
                   </div>
                   <div className="text-message">
-                    <p className="text-gray-500 dark:text-white">“Now or never.”</p>
+                    <p className="text-gray-500 dark:text-white">
+                      “Now or never.”
+                    </p>
                   </div>
                 </div>
               </div>
@@ -644,7 +657,7 @@ function WhatsappUI() {
             </div>
 
             <div
-              className="relative w-[100%] p-[50px] overflow-y-auto scrollbar "
+              className="relative w-[100%] p-[50px] overflow-y-auto no-scrollbar "
               style={{ height: "calc(100% - 120px)" }}
             >
               <div className="relative flex w-full my-5 justify-center">
@@ -806,7 +819,7 @@ function WhatsappUI() {
               </div>
 
               <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]" >
+                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]">
                   The trailer looks good
                   <span className="block mt-2 text-xs opacity-50">07:45</span>
                 </p>

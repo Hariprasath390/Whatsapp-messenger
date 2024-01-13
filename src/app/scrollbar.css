@@ -1,15 +1,15 @@
-.scrollbar::-webkit-scrollbar {
-  width: 4px;
-  height: 0px;
-  margin-top: 1px;
+/* .scrollbar::-webkit-scrollbar {
+  overflow: hidden;
 }
 
 /* Define the thumb style */
-.scrollbar::-webkit-scrollbar-thumb {
+
+/* .scrollbar::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom right, #9ca3af 0%, #9ca3af 100%);
   border-radius: 5px;
-  height: 10%; /* Adjust the height to your preference */
-}
+  height: 10%; 
+  overflow: hidden;
+}   */
 
 .bg-image {
   position: absolute;
