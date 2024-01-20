@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./scrollbar.css";
 import Modal from "./components/Modal";
 import Image from "next/image";
@@ -8,6 +8,11 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 // import TemporaryDrawer from "./components/TemporaryDrawer";
 
 function WhatsappUI() {
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  console.log(selectedChat, "++++###");
+
   // const [drawerOpen, setDrawerOpen] = useState(false);
 
   // const handleDrawerClick = () => {
@@ -38,11 +43,429 @@ function WhatsappUI() {
     setShowEmojiDiv(!showEmojiDiv);
   };
 
+  const chatData = [
+    {
+      id: 1,
+      name: "Vijay",
+      imageUrl: "/images/vijay.jpg",
+      message: "How are you?",
+      time: "11:49",
+      unreadCount: 1,
+    },
+    {
+      id: 2,
+      name: "Rogers",
+      imageUrl: "/images/rogers.jpg",
+      message: "I’ll be there.",
+      time: "10:49",
+      unreadCount: 4,
+    },
+    {
+      id: 3,
+      name: "Roshna",
+      imageUrl: "/images/roshna.jpg",
+      message: "Make somebody’s day.",
+      time: "09:49",
+      unreadCount: 2,
+    },
+    {
+      id: 4,
+      name: "Zendaya",
+      imageUrl: "/images/zendaya.jpg",
+      message: "Dreams come true.",
+      time: "08:49",
+      unreadCount: 0,
+    },
+    {
+      id: 5,
+      name: "Thor",
+      imageUrl: "/images/thor.jpg",
+      message: "Awesome! I'll start a vid..",
+      time: "07:49",
+      unreadCount: 0,
+    },
+    {
+      id: 6,
+      name: "Alia Bhat",
+      imageUrl: "/images/alia.jpg",
+      message: "i Love you",
+      time: "6:59",
+      unreadCount: 1,
+    },
+    {
+      id: 7,
+      name: "Natasha",
+      imageUrl: "/images/natasha.jpg",
+      message: "Love, light, laughter.",
+      time: "06:49",
+      unreadCount: 0,
+    },
+    {
+      id: 8,
+      name: "Virat",
+      imageUrl: "/images/virat.jpg",
+      message: "Appreciate the mome..",
+      time: "Yesterday",
+      unreadCount: 2,
+    },
+    {
+      id: 9,
+      name: "Jeslin",
+      imageUrl: "/images/jeslin.jpg",
+      message: "Now or never.",
+      time: "Yesterday",
+      unreadCount: 0,
+    },
+  ];
+
+  const chatMessageData = [
+    {
+      userName: "Thor",
+      status: "Online",
+      profileImage: "/images/thor.jpg",
+      messages: [
+        { day: "Wednesday!" },
+        {
+          receiver: "I've been waiting to see that show asap!",
+          timestamp: "07:45",
+        },
+        { sender: "Ahh, I can't believe you do too!", timestamp: "07:45" },
+        { sender: "The trailer looks good", timestamp: "07:45" },
+        { sender: "I've been waiting to watch it!!", timestamp: "07:45" },
+        { receiver: "😐😐😐", timestamp: "07:46" },
+        { receiver: "Mee too! 😊", timestamp: "07:46" },
+        {
+          sender: "We should video chat to discuss, if you're up for it!",
+          timestamp: "07:48",
+        },
+        { receiver: "Sure", timestamp: "07:48" },
+        { receiver: "I'm free now!", timestamp: "07:48" },
+        {
+          sender: "Awesome! I'll start a video chat with you in a few.",
+          timestamp: "07:49",
+        },
+      ],
+    },
+    {
+      userName: "Vijay",
+      status: "Offline",
+      profileImage: "/images/vijay.jpg", // Replace with the actual image path for Vijay
+      messages: [
+        { day: "Thursday!" },
+        {
+          receiver: "Hey, have you watched the latest movie?",
+          timestamp: "09:30",
+        },
+        { sender: "Not yet, is it good?", timestamp: "09:30" },
+        {
+          receiver: "Absolutely! You should check it out.",
+          timestamp: "09:31",
+        },
+        { sender: "I'll add it to my watchlist", timestamp: "09:31" },
+        {
+          receiver: "Great choice! Let me know your thoughts after watching.",
+          timestamp: "09:32",
+        },
+      ],
+    },
+    {
+      userName: "Roshna",
+      status: "Away",
+      profileImage: "/images/roshna.jpg", // Replace with the actual image path for Roshna
+      messages: [
+        { day: "Friday!" },
+        {
+          receiver: "Hey, how's it going?",
+          timestamp: "11:15",
+        },
+        {
+          sender: "Hi Roshna! Not bad, just chilling. How about you?",
+          timestamp: "11:15",
+        },
+        { receiver: "I'm good too, just busy with work.", timestamp: "11:16" },
+        { sender: "Take a break when you can! 😊", timestamp: "11:16" },
+        { receiver: "I will, thanks! 😊", timestamp: "11:17" },
+      ],
+    },
+    {
+      userName: "Zendaya",
+      status: "Online",
+      profileImage: "/images/zendaya.jpg", // Replace with the actual image path for Zendaya
+      messages: [
+        { day: "Saturday!" },
+        {
+          receiver: "Hey, have you seen the latest fashion trends?",
+          timestamp: "14:00",
+        },
+        { sender: "Not yet! What's trending?", timestamp: "14:00" },
+        {
+          receiver: "Lots of vibrant colors and bold patterns.",
+          timestamp: "14:01",
+        },
+        {
+          sender: "Sounds exciting! Any specific recommendations?",
+          timestamp: "14:01",
+        },
+        {
+          receiver:
+            "You should try incorporating neon colors, they're in right now.",
+          timestamp: "14:02",
+        },
+        {
+          sender: "Thanks for the tip! I'll give it a shot.",
+          timestamp: "14:02",
+        },
+        { sender: "By the way, how's your day going?", timestamp: "14:03" },
+        {
+          receiver:
+            "It's been good, just catching up on some projects. How about yours?",
+          timestamp: "14:03",
+        },
+        {
+          sender: "Pretty relaxed, just enjoying the weekend vibes.",
+          timestamp: "14:04",
+        },
+      ],
+    },
+    {
+      userName: "Alia Bhat",
+      status: "Online",
+      profileImage: "/images/alia.jpg", // Replace with the actual image path for Alia Bhatt
+      messages: [
+        { day: "Sunday!" },
+        {
+          receiver: "Hey, have you heard about the new movie coming out?",
+          timestamp: "15:30",
+        },
+        { sender: "No, what's the movie about?", timestamp: "15:30" },
+        {
+          receiver:
+            "It's a romantic comedy with a twist of suspense. Looks promising!",
+          timestamp: "15:31",
+        },
+        {
+          sender: "Sounds interesting! When is it releasing?",
+          timestamp: "15:31",
+        },
+        {
+          receiver: "Next Friday. Would you be up for watching it together?",
+          timestamp: "15:32",
+        },
+        { sender: "Absolutely! Count me in.", timestamp: "15:32" },
+        { sender: "By the way, how was your day?", timestamp: "15:33" },
+        {
+          receiver: "It was good, just finished a photoshoot. How about yours?",
+          timestamp: "15:33",
+        },
+        {
+          sender: "Pretty relaxing, just enjoying the weekend vibes.",
+          timestamp: "15:34",
+        },
+      ],
+    },
+    {
+      userName: "Natasha",
+      status: "Online",
+      profileImage: "/images/natasha.jpg", // Replace with the actual image path for Natasha
+      messages: [
+        { day: "Monday!" },
+        {
+          receiver:
+            "Hey, did you check out the new exhibition at the art gallery?",
+          timestamp: "16:00",
+        },
+        { sender: "Not yet, is it worth a visit?", timestamp: "16:00" },
+        {
+          receiver: "Absolutely! There are some amazing pieces on display.",
+          timestamp: "16:01",
+        },
+        {
+          sender:
+            "I'll definitely go check it out this weekend. Thanks for the recommendation!",
+          timestamp: "16:01",
+        },
+        {
+          receiver: "You're welcome! Let me know what you think of it.",
+          timestamp: "16:02",
+        },
+        { sender: "By the way, how's your day going?", timestamp: "16:02" },
+        {
+          receiver:
+            "Pretty good, just working on a new project. How about yours?",
+          timestamp: "16:03",
+        },
+        {
+          sender:
+            "Just a usual Monday, but looking forward to the weekend already!",
+          timestamp: "16:03",
+        },
+      ],
+    },
+    {
+      userName: "Virat",
+      status: "Online",
+      profileImage: "/images/virat.jpg", // Replace with the actual image path for Virat
+      messages: [
+        { day: "Tuesday!" },
+        {
+          receiver: "Hey, did you catch the cricket match yesterday?",
+          timestamp: "18:30",
+        },
+        {
+          sender: "Yes, it was an intense game! What did you think?",
+          timestamp: "18:30",
+        },
+        {
+          receiver:
+            "Absolutely thrilling! That last over had me on the edge of my seat.",
+          timestamp: "18:31",
+        },
+        {
+          sender: "I know, right? Incredible performance by both teams.",
+          timestamp: "18:31",
+        },
+        {
+          receiver:
+            "Do you think they'll maintain this momentum in the upcoming series?",
+          timestamp: "18:32",
+        },
+        {
+          sender:
+            "Hard to say, but it's going to be an exciting series for sure.",
+          timestamp: "18:32",
+        },
+        {
+          receiver:
+            "Can't wait for the next match! Are you planning to watch it live?",
+          timestamp: "18:33",
+        },
+        {
+          sender: "Definitely! It's going to be a must-watch. Want to join?",
+          timestamp: "18:33",
+        },
+        { receiver: "Absolutely, count me in!", timestamp: "18:34" },
+      ],
+    },
+    {
+      userName: "Jeslin",
+      status: "Online",
+      profileImage: "/images/jeslin.jpg", // Replace with the actual image path for Jeslin
+      messages: [
+        { day: "Thursday!" },
+        {
+          receiver: "Hey, how's it going?",
+          timestamp: "10:15",
+        },
+        {
+          sender:
+            "Hi Jeslin! Not bad, just working on some projects. How about you?",
+          timestamp: "10:15",
+        },
+        {
+          receiver: "I'm doing well, thanks! Just finished a workout session.",
+          timestamp: "10:16",
+        },
+        {
+          sender:
+            "That's awesome! Staying active is important. Any exciting plans for the day?",
+          timestamp: "10:16",
+        },
+        {
+          receiver:
+            "Not much, just a chill day. Maybe catch up on some reading later.",
+          timestamp: "10:17",
+        },
+        {
+          sender: "Sounds relaxing! What are you currently reading?",
+          timestamp: "10:17",
+        },
+        {
+          receiver: "I'm into mystery novels lately. Any recommendations?",
+          timestamp: "10:18",
+        },
+        {
+          sender:
+            "If you haven't read it yet, 'The Girl with the Dragon Tattoo' is a must-read.",
+          timestamp: "10:18",
+        },
+      ],
+    },
+    {
+      userName: "Rogers",
+      status: "Online",
+      profileImage: "/images/rogers.jpg", // Replace with the actual image path for Captain America
+      messages: [
+        { day: "Friday!" },
+        {
+          receiver: "Hey, Cap! How's the day treating you?",
+          timestamp: "12:00",
+        },
+        {
+          sender: "Hey there! Just finished a training session. What's up?",
+          timestamp: "12:00",
+        },
+        {
+          receiver:
+            "Not much, just checking in. Anything exciting happening at the Avengers HQ?",
+          timestamp: "12:01",
+        },
+        {
+          sender:
+            "Just the usual. Planning for the next mission. How about you? Any plans for the weekend?",
+          timestamp: "12:01",
+        },
+        {
+          receiver:
+            "Thinking of catching up on some movies. Any recommendations?",
+          timestamp: "12:02",
+        },
+        {
+          sender:
+            "How about a classic like 'Casablanca' or 'Gone with the Wind'? Always a good choice.",
+          timestamp: "12:02",
+        },
+        {
+          receiver: "Great picks! I'll add them to my list. Thanks, Cap!",
+          timestamp: "12:03",
+        },
+        {
+          sender:
+            "Anytime, soldier! Let me know if you need backup with the movie marathon.",
+          timestamp: "12:03",
+        },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    const defaultChatUser = "Vijay";
+
+    const fetchData = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        const defaultChat = chatMessageData.find(
+          (user) => user.userName === defaultChatUser
+        );
+
+        setSelectedChat(defaultChat);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(selectedChat, "++++###");
+
   return (
     <div className="no-scrollbar">
       <div className=" w-[100%]  h-[20%] absolute bg-gradient-to-r from-slate-500 to-yellow-100  hidden md:block"></div>
       <ThemeSwitcher />
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center ">
         <div className="main-container md:mt-6 ">
           <div className=" md:relative w-[30%] h-[100%] flex-[30%] bg-[#fff] dark:bg-gradient-to-r from-slate-500 to-yellow-1000   sticky top-0 ">
             <div className="lg:relative sticky top-0 z-50  flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500 justify-between">
@@ -354,7 +777,7 @@ function WhatsappUI() {
               </button>
             </div>
 
-            <div className=" overflow-y-scroll no-scrollbar sm:h-[calc(100%-110px)] h-screen ">
+            {/* <div className=" overflow-y-scroll no-scrollbar sm:h-[calc(100%-110px)] h-screen ">
               <div className=" flex items-center  border-b border-gray-200 p-[10px]">
                 <div className="img-box ">
                   <Image
@@ -578,93 +1001,188 @@ function WhatsappUI() {
                   </div>
                 </div>
               </div>
+            </div> */}
+
+            <div className="overflow-y-scroll no-scrollbar sm:h-[calc(100%-110px)] h-screen">
+              {chatData.map((chat) => (
+                <div
+                  key={chat.id}
+                  className="chat-box flex items-center border-b border-gray-200 p-[15px]"
+                  onClick={() => {
+                    const selectedChat = chatData.find(
+                      (chatItem) => chatItem.id === chat.id
+                    );
+                    setSelectedChat(selectedChat);
+                  }}
+                >
+                  <div className="img-box w-14 h-14 overflow-hidden rounded-full">
+                    <Image
+                      className="object-cover w-full h-full"
+                      src={chat.imageUrl}
+                      alt=""
+                      width={1000}
+                      height={800}
+                    />
+                  </div>
+                  <div className="chat-details flex flex-col ml-4 w-full">
+                    <div className="text-head flex justify-between items-center mb-1">
+                      <h4 className="text-md text-black/80 font-bold">
+                        {chat.name}
+                      </h4>
+                      <p
+                        className={`text-${
+                          chat.unreadCount === 0 ? "gray-500" : "[#06e744]"
+                        } text-sm font-bold`}
+                      >
+                        {chat.time}
+                      </p>
+                    </div>
+                    <div className="text-message flex justify-between items-center">
+                      <p
+                        className={`text-${
+                          chat.unreadCount > 0
+                            ? "gray-500 dark:text-white"
+                            : "gray-500 dark:text-white"
+                        }`}
+                      >
+                        {chat.unreadCount > 0
+                          ? `“${chat.message}”`
+                          : chat.message}
+                      </p>
+                      {chat.unreadCount > 0 && (
+                        <b className="bg-[#06e744] text-white rounded-full w-5 h-5 flex justify-center items-center">
+                          {chat.unreadCount}
+                        </b>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
           <div className="relative w-[70%] h-[100%] flex-[70%] bg-[#e5ddd5] dark:bg-gradient-to-r from-slate-500 hidden md:block">
             <div className="bg-image"> </div>
 
-            <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500  px-[15px] justify-between">
-              <div className=" flex gap-3 ">
-                <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
-                  <Image
-                    className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
-                    src="/images/thor.jpg"
-                    alt=""
-                    width={1000}
-                    height={800}
-                  />
-                </div>
-                <h4 className="font-bold text-black/70 font-sans text-[14px] dark:text-white">
-                  Thor
-                  <br />
-                  <span className="font-sans text-gray-500 text-xs dark:text-white">
-                    Online
-                  </span>
-                </h4>
-              </div>
-              <div className="flex justify-end pl-[110px]">
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="p-2 hover:bg-gray-200 rounded-full">
-                      <span className="text-gray-600">
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="24"
-                          width="24"
-                          preserveAspectRatio="xMidYMid meet"
-                          className=""
-                          version="1.1"
-                          x="0px"
-                          y="0px"
-                          enableBackground="new 0 0 24 24"
-                        >
-                          <title>search-alt</title>
-                          <path
-                            fill="currentColor"
-                            d="M15.9,14.3H15L14.7,14c1-1.1,1.6-2.7,1.6-4.3c0-3.7-3-6.7-6.7-6.7S3,6,3,9.7 s3,6.7,6.7,6.7c1.6,0,3.2-0.6,4.3-1.6l0.3,0.3v0.8l5.1,5.1l1.5-1.5L15.9,14.3z M9.7,14.3c-2.6,0-4.6-2.1-4.6-4.6s2.1-4.6,4.6-4.6 s4.6,2.1,4.6,4.6S12.3,14.3,9.7,14.3z"
-                          ></path>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
+            {isLoading ? (
+              // Loading state, you can replace this with your loader component
+              <p className="text-center justify-center flex items-center h-screen text-black ">
+                Loading...
+              </p>
+            ) : (
+              <div>
+                {selectedChat && (
+                  <div className="relative flex items-center w-[100%] h-[60px] bg-[#ededed] dark:bg-gradient-to-r from-slate-500  px-[15px] justify-between">
+                    {chatMessageData
+                      .filter(
+                        (user) =>
+                          user.userName === selectedChat.name ||
+                          user.userName === selectedChat.userName
+                      )
+                      .map((user, index) => (
+                        <div className=" flex gap-3 " key={index}>
+                          <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
+                            <Image
+                              className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
+                              src={user.profileImage}
+                              alt=""
+                              width={1000}
+                              height={800}
+                            />
+                          </div>
+                          <h4 className="font-bold text-black/70 font-sans text-[14px] dark:text-white">
+                            {user.userName}
+                            <br />
+                            <span className="font-sans text-gray-500 text-xs dark:text-white">
+                              {user.status}
+                            </span>
+                          </h4>
+                        </div>
+                      ))}
+                    <div className="flex justify-end pl-[110px]">
+                      <div className="flex items-center space-x-4">
+                        <div className="flex-shrink-0">
+                          <div className="p-2 hover:bg-gray-200 rounded-full">
+                            <span className="text-gray-600">
+                              <svg
+                                viewBox="0 0 24 24"
+                                height="24"
+                                width="24"
+                                preserveAspectRatio="xMidYMid meet"
+                                className=""
+                                version="1.1"
+                                x="0px"
+                                y="0px"
+                                enableBackground="new 0 0 24 24"
+                              >
+                                <title>search-alt</title>
+                                <path
+                                  fill="currentColor"
+                                  d="M15.9,14.3H15L14.7,14c1-1.1,1.6-2.7,1.6-4.3c0-3.7-3-6.7-6.7-6.7S3,6,3,9.7 s3,6.7,6.7,6.7c1.6,0,3.2-0.6,4.3-1.6l0.3,0.3v0.8l5.1,5.1l1.5-1.5L15.9,14.3z M9.7,14.3c-2.6,0-4.6-2.1-4.6-4.6s2.1-4.6,4.6-4.6 s4.6,2.1,4.6,4.6S12.3,14.3,9.7,14.3z"
+                                ></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
 
-                  <div>
-                    <div className="p-2 hover:bg-gray-200 rounded-full">
-                      <span className="text-gray-600">
-                        <svg
-                          viewBox="0 0 24 24"
-                          height="24"
-                          width="24"
-                          preserveAspectRatio="xMidYMid meet"
-                          className=""
-                          version="1.1"
-                          x="0px"
-                          y="0px"
-                          enableBackground="new 0 0 24 24"
-                        >
-                          <title>menu</title>
-                          <path
-                            fill="currentColor"
-                            d="M12,7c1.104,0,2-0.896,2-2c0-1.105-0.895-2-2-2c-1.104,0-2,0.894-2,2 C10,6.105,10.895,7,12,7z M12,9c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,9.895,13.104,9,12,9z M12,15 c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,15.894,13.104,15,12,15z"
-                          ></path>
-                        </svg>
-                      </span>
+                        <div>
+                          <div className="p-2 hover:bg-gray-200 rounded-full">
+                            <span className="text-gray-600">
+                              <svg
+                                viewBox="0 0 24 24"
+                                height="24"
+                                width="24"
+                                preserveAspectRatio="xMidYMid meet"
+                                className=""
+                                version="1.1"
+                                x="0px"
+                                y="0px"
+                                enableBackground="new 0 0 24 24"
+                              >
+                                <title>menu</title>
+                                <path
+                                  fill="currentColor"
+                                  d="M12,7c1.104,0,2-0.896,2-2c0-1.105-0.895-2-2-2c-1.104,0-2,0.894-2,2 C10,6.105,10.895,7,12,7z M12,9c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,9.895,13.104,9,12,9z M12,15 c-1.104,0-2,0.894-2,2c0,1.104,0.895,2,2,2c1.104,0,2-0.896,2-2C13.999,15.894,13.104,15,12,15z"
+                                ></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
-            </div>
+            )}
 
             <div
               className="relative w-[100%] p-[50px] overflow-y-auto no-scrollbar "
               style={{ height: "calc(100% - 120px)" }}
             >
-              <div className="relative flex w-full my-5 justify-center">
-                <p className="relative right-0 text-right max-w-2/3 p-2  rounded-lg text-xs bg-[#ffffff] dark:bg-[#b1b6a7] dark:text-black ">
-                  Wednesday !
-                </p>
-              </div>
+              {selectedChat && (
+                <div>
+                  {chatMessageData
+                    .filter(
+                      (user) =>
+                        user.userName === selectedChat.name ||
+                        user.userName === selectedChat.userName
+                    )
+                    .map((user, index) =>
+                      user.messages.map(
+                        (message, innerIndex) =>
+                          message.day && (
+                            <div
+                              className="relative flex w-full my-5 justify-center"
+                              key={innerIndex}
+                            >
+                              <p className="relative right-0 text-right max-w-2/3 p-2 rounded-lg text-xs bg-[#ffffff] dark:bg-[#b1b6a7] dark:text-black">
+                                {message.day}
+                              </p>
+                            </div>
+                          )
+                      )
+                    )}
+                </div>
+              )}
 
               {/* {showEmojiDiv && (
                 <div className="emojianimationn">
@@ -778,193 +1296,76 @@ function WhatsappUI() {
                 </div>
               )} */}
 
-              <div className="group relative flex w-full my-5 justify-end items-center">
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div
-                    className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1"
-                    onClick={toggleEmojiDiv}
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
+              {selectedChat && (
+                <div>
+                  {chatMessageData
+                    .filter(
+                      (user) =>
+                        user.userName === selectedChat.name ||
+                        user.userName === selectedChat.userName
+                    )
+                    .map((user, index) =>
+                      user.messages.map((message, innerIndex) => (
+                        <div
+                          key={innerIndex}
+                          className={`group relative flex w-full my-5 ${
+                            message.receiver
+                              ? "justify-end items-center"
+                              : "items-center"
+                          }`}
+                        >
+                          {message.receiver && (
+                            <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
+                              <div
+                                className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1"
+                                onClick={toggleEmojiDiv}
+                              >
+                                <svg
+                                  viewBox="0 0 24 24"
+                                  className="w-6 h-6 text-white fill-current"
+                                >
+                                  <title>smiley</title>
+                                  <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          )}
+
+                          {!message.day && ( // Add this condition to exclude day messages
+                            <p
+                              className={`relative right-0 text-right max-w-2/3 p-3 rounded-lg text-sm ${
+                                message.receiver
+                                  ? "bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]"
+                                  : "bg-[#ffffff] dark:text-white dark:bg-[#838f96]"
+                              }`}
+                            >
+                              {message.sender
+                                ? message.sender
+                                : message.receiver}
+                              <span className="block mt-2 text-xs opacity-50">
+                                {message.timestamp}
+                              </span>
+                            </p>
+                          )}
+
+                          {message.sender && (
+                            <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
+                              <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
+                                <svg
+                                  viewBox="0 0 24 24"
+                                  className="w-6 h-6 text-white fill-current"
+                                >
+                                  <title>smiley</title>
+                                  <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
+                                </svg>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
                 </div>
-
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0] ">
-                  I&apos;ve been waiting to see that show asap!
-                  <span className="block mt-2 text-xs opacity-50 ">07:43</span>
-                </p>
-              </div>
-
-              <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff]  dark:text-white dark:bg-[#838f96]">
-                  Ahh, I can&apos;t believe you do too!
-                  <span className="block mt-2 text-xs opacity-50">07:45</span>
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]">
-                  The trailer looks good
-                  <span className="block mt-2 text-xs opacity-50">07:45</span>
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative flex w-full my-5 items-center">
-                <p className="text-right max-w-2/3 p-3 rounded-lg text-sm bg-[#ffffff] dark:text-white dark:bg-[#838f96]">
-                  I&apos;ve been waiting to watch it!!
-                  <span className="block mt-2 text-xs opacity-50">07:45</span>
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-end items-center">
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
-                  😐😐😐
-                  <span className="block mt-2 text-xs opacity-50">07:46</span>
-                </p>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-end items-center">
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
-                  Mee too! 😊
-                  <span className="block mt-2 text-xs opacity-50">07:46</span>
-                </p>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-start items-center">
-                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm dark:text-white dark:bg-[#838f96]">
-                  We should video chat to discuss, if you&apos;re up for it!
-                  <span className="block mt-2 text-xs opacity-50">07:48</span>
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-end items-center">
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
-                  Sure
-                  <span className="block mt-2 text-xs opacity-50">07:48</span>
-                </p>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-end items-center">
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-
-                <p className="relative right-0 text-right max-w-2/3 p-3  rounded-lg text-sm bg-[#dcf8c6] dark:text-black dark:bg-[#f5f2c0]  ">
-                  I&apos;m free now!
-                  <span className="block mt-2 text-xs opacity-50">07:48</span>
-                </p>
-              </div>
-
-              <div className="group relative flex w-full my-5 justify-start items-center">
-                <p className="text-right max-w-2/3 p-3 bg-white rounded-lg text-sm dark:text-white dark:bg-[#838f96]">
-                  Awesome! I&apos;ll start a video chat with you in a few.
-                  <span className="block mt-2 text-xs opacity-50">07:49</span>
-                </p>
-                <div className="opacity-0 group-hover:opacity-100 transition duration-300 text-white p-3 rounded-lg shadow-sm items-center">
-                  <div className="font-bold text-lg mb-2 bg-black/10 rounded-full p-1">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="w-6 h-6 text-white fill-current"
-                    >
-                      <title>smiley</title>
-                      <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
 
             <div className="relative w-[100%] h-[60px] bg-[#f0f0f0] dark:bg-gradient-to-r from-slate-500  flex justify-between items-center ">
@@ -985,7 +1386,7 @@ function WhatsappUI() {
 
               <svg
                 viewBox="0 0 24 24"
-                className="w-10 h-[36.5px] p-2 text-gray-700 fill-current bg-white rounded-l-md -mx-2.5 ml-2 dark:bg-[#b1b6a7] dark:text-black"
+                className="w-10 h-[36.5px] p-2 text-gray-700 fill-current bg-white rounded-l-md -mx-2.5 ml-2 dark:bg-white dark:text-black"
               >
                 <title>smiley</title>
                 <path d="M9.153,11.603c0.795,0,1.439-0.879,1.439-1.962S9.948,7.679,9.153,7.679S7.714,8.558,7.714,9.641S8.358,11.603,9.153,11.603z M5.949,12.965c-0.026-0.307-0.131,5.218,6.063,5.551c6.066-0.25,6.066-5.551,6.066-5.551C12,14.381,5.949,12.965,5.949,12.965z M17.312,14.073c0,0-0.669,1.959-5.051,1.959c-3.505,0-5.388-1.164-5.607-1.959C6.654,14.073,12.566,15.128,17.312,14.073z M11.804,1.011c-6.195,0-10.826,5.022-10.826,11.217s4.826,10.761,11.021,10.761S23.02,18.423,23.02,12.228C23.021,6.033,17.999,1.011,11.804,1.011z M12,21.354c-5.273,0-9.381-3.886-9.381-9.159s3.942-9.548,9.215-9.548s9.548,4.275,9.548,9.548C21.381,17.467,17.273,21.354,12,21.354z M15.108,11.603c0.795,0,1.439-0.879,1.439-1.962s-0.644-1.962-1.439-1.962s-1.439,0.879-1.439,1.962S14.313,11.603,15.108,11.603z"></path>
@@ -993,7 +1394,7 @@ function WhatsappUI() {
               <input
                 type="text"
                 placeholder="Type a message"
-                className="relative w-[90%]   mx-[4px] p-[6px] rounded-lg text-base border-none outline-none dark:bg-[#b1b6a7] dark:text-black dark:placeholder:text-black"
+                className="relative w-[90%]   mx-[4px] p-[6px] rounded-lg text-base border-none outline-none dark:bg-white dark:text-black dark:placeholder:text-black"
               />
 
               <div className="relative">
