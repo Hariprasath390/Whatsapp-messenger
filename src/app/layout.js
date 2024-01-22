@@ -26,14 +26,20 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Darkmode with Next.js and TailwindCSS",
+  title: "Whatsapp Web",
   description:
     "A simple app to showcase dark mode with Next.js and TailwindCSS",
+  icons: {
+    icon: "/whatsappIcon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/whatsappIcon.png" />
+      </head>
       <body className={`${inter.className} bg-slate-50 dark:bg-[#b1b6a7] `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ThemeSwitcher />

@@ -1082,7 +1082,7 @@ function WhatsappUI() {
                         <div className=" flex gap-3 " key={index}>
                           <div className="relative w-[40px] h-[40px] overflow-hidden rounded-[50%]">
                             <Image
-                              className="relative top-[-2px] left-[0px] w-[40px] h-auto overflow-hidden object-cover"
+                              className="object-cover w-full h-full"
                               src={user.profileImage}
                               alt=""
                               width={1000}
