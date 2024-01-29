@@ -27,8 +27,13 @@ function Page() {
 
   const [selectedChat, setSelectedChat] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const urlParams = new URLSearchParams(window.location.search);
-  const chatId = urlParams.get("chatId");
+  // const urlParams = new URLSearchParams(window.location.search);
+
+  const urlParams =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
+  const chatId = urlParams?.get("chatId");
 
   const chatData = [
     {

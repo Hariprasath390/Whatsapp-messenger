@@ -8,15 +8,6 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 // import TemporaryDrawer from "./components/TemporaryDrawer";
 
 function WhatsappUI() {
-  // const handleChatItemClick = (chatId) => {
-  //   const selectedChat = chatData.find((chatItem) => chatItem.id === chatId);
-  //   setSelectedChat(selectedChat);
-
-  //   if (typeof window !== "undefined" && window.innerWidth < 600) {
-  //     window.location.href = "/chatMessage";
-
-  //   }
-  // };
 
   const handleChatItemClick = (chatId) => {
     const selectedChat = chatData.find((chatItem) => chatItem.id === chatId);
@@ -24,7 +15,7 @@ function WhatsappUI() {
 
     if (typeof window !== "undefined" && window.innerWidth < 600) {
       // Construct the URL with query parameters
-      const queryString = `?chatId=${chatId}&otherData=${selectedChat.otherData}`;
+      const queryString = `?chatId=${chatId}`;
       const redirectUrl = `/chatMessage${queryString}`;
 
       // Redirect to the new URL
