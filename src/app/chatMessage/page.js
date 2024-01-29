@@ -3,11 +3,33 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
-function page() {
+function Page() {
+  useEffect(() => {
+    const defaultChatUser = "Vijay";
+
+    const fetchData = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        const defaultChat = chatMessageData.find(
+          (user) => user.userName === defaultChatUser
+        );
+
+        setSelectedChat(defaultChat);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
   const [selectedChat, setSelectedChat] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const urlParams = new URLSearchParams(window.location.search);
   const chatId = urlParams.get("chatId");
+
   const chatData = [
     {
       id: 1,
@@ -82,6 +104,7 @@ function page() {
       unreadCount: 0,
     },
   ];
+
   const chatMessageData = [
     {
       userName: "Thor",
@@ -400,7 +423,7 @@ function page() {
       ],
     },
   ];
-  
+
   const selectedChatData = chatData.find((chat) => chat.id == chatId);
   const selectedChatMessageData = chatMessageData.find(
     (chatMessage) => chatMessage.userName === selectedChatData?.name
@@ -410,26 +433,6 @@ function page() {
   const toggleEmojiDiv = () => {
     setShowEmojiDiv(!showEmojiDiv);
   };
-  useEffect(() => {
-    const defaultChatUser = "Vijay";
-
-    const fetchData = async () => {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        const defaultChat = chatMessageData.find(
-          (user) => user.userName === defaultChatUser
-        );
-
-        setSelectedChat(defaultChat);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div>
@@ -747,4 +750,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
