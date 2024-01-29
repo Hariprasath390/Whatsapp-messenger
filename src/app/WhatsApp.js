@@ -8,6 +8,30 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 // import TemporaryDrawer from "./components/TemporaryDrawer";
 
 function WhatsappUI() {
+  // const handleChatItemClick = (chatId) => {
+  //   const selectedChat = chatData.find((chatItem) => chatItem.id === chatId);
+  //   setSelectedChat(selectedChat);
+
+  //   if (typeof window !== "undefined" && window.innerWidth < 600) {
+  //     window.location.href = "/chatMessage";
+
+  //   }
+  // };
+
+  const handleChatItemClick = (chatId) => {
+    const selectedChat = chatData.find((chatItem) => chatItem.id === chatId);
+    setSelectedChat(selectedChat);
+
+    if (typeof window !== "undefined" && window.innerWidth < 600) {
+      // Construct the URL with query parameters
+      const queryString = `?chatId=${chatId}&otherData=${selectedChat.otherData}`;
+      const redirectUrl = `/chatMessage${queryString}`;
+
+      // Redirect to the new URL
+      window.location.href = redirectUrl;
+    }
+  };
+
   const [selectedChat, setSelectedChat] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -149,7 +173,7 @@ function WhatsappUI() {
     {
       userName: "Vijay",
       status: "Offline",
-      profileImage: "/images/vijay.jpg", // Replace with the actual image path for Vijay
+      profileImage: "/images/vijay.jpg",
       messages: [
         { day: "Thursday!" },
         {
@@ -171,7 +195,7 @@ function WhatsappUI() {
     {
       userName: "Roshna",
       status: "Away",
-      profileImage: "/images/roshna.jpg", // Replace with the actual image path for Roshna
+      profileImage: "/images/roshna.jpg",
       messages: [
         { day: "Friday!" },
         {
@@ -190,7 +214,7 @@ function WhatsappUI() {
     {
       userName: "Zendaya",
       status: "Online",
-      profileImage: "/images/zendaya.jpg", // Replace with the actual image path for Zendaya
+      profileImage: "/images/zendaya.jpg",
       messages: [
         { day: "Saturday!" },
         {
@@ -230,7 +254,7 @@ function WhatsappUI() {
     {
       userName: "Alia Bhat",
       status: "Online",
-      profileImage: "/images/alia.jpg", // Replace with the actual image path for Alia Bhatt
+      profileImage: "/images/alia.jpg",
       messages: [
         { day: "Sunday!" },
         {
@@ -266,7 +290,7 @@ function WhatsappUI() {
     {
       userName: "Natasha",
       status: "Online",
-      profileImage: "/images/natasha.jpg", // Replace with the actual image path for Natasha
+      profileImage: "/images/natasha.jpg",
       messages: [
         { day: "Monday!" },
         {
@@ -304,7 +328,7 @@ function WhatsappUI() {
     {
       userName: "Virat",
       status: "Online",
-      profileImage: "/images/virat.jpg", // Replace with the actual image path for Virat
+      profileImage: "/images/virat.jpg",
       messages: [
         { day: "Tuesday!" },
         {
@@ -349,7 +373,7 @@ function WhatsappUI() {
     {
       userName: "Jeslin",
       status: "Online",
-      profileImage: "/images/jeslin.jpg", // Replace with the actual image path for Jeslin
+      profileImage: "/images/jeslin.jpg",
       messages: [
         { day: "Thursday!" },
         {
@@ -393,7 +417,7 @@ function WhatsappUI() {
     {
       userName: "Rogers",
       status: "Online",
-      profileImage: "/images/rogers.jpg", // Replace with the actual image path for Captain America
+      profileImage: "/images/rogers.jpg",
       messages: [
         { day: "Friday!" },
         {
@@ -460,6 +484,11 @@ function WhatsappUI() {
   }, []);
 
   console.log(selectedChat, "++++###");
+
+  // const handleChatItemClick = (chatId) => {
+  //   const selectedChat = chatData.find((chatItem) => chatItem.id === chatId);
+  //   setSelectedChat(selectedChat);
+  // };
 
   return (
     <div className="no-scrollbar">
@@ -755,7 +784,7 @@ function WhatsappUI() {
                     <input
                       type="search"
                       id="search"
-                      className="block w-full p-1.5 ps-10 text-sm text-gray-900 border border-gray-100 rounded-lg bg-white outline-none"
+                      className="block w-full p-1.5 ps-10 text-sm text-gray-900 border border-gray-100 rounded-lg bg-white outline-none "
                       value={inputValue}
                       onChange={handleChange}
                       placeholder="Search or start new chat"
@@ -1008,12 +1037,7 @@ function WhatsappUI() {
                 <div
                   key={chat.id}
                   className="chat-box flex items-center border-b border-gray-200 p-[15px]"
-                  onClick={() => {
-                    const selectedChat = chatData.find(
-                      (chatItem) => chatItem.id === chat.id
-                    );
-                    setSelectedChat(selectedChat);
-                  }}
+                  onClick={() => handleChatItemClick(chat.id)}
                 >
                   <div className="img-box w-14 h-14 overflow-hidden rounded-full">
                     <Image

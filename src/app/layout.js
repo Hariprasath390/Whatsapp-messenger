@@ -29,9 +29,6 @@ export const metadata = {
   title: "Whatsapp Web",
   description:
     "A simple app to showcase dark mode with Next.js and TailwindCSS",
-  icons: {
-    icon: "/whatsappIcon.png",
-  },
 };
 
 export default function RootLayout({ children }) {
